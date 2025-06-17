@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saim Rizwan - Chartered Accountant Aspirant</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap'); /* Added 800 for extra bold */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d121c; /* Even darker background for contrast */
+            color: #e0e6ee; /* Slightly brighter text color */
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden; /* Prevent horizontal scroll from animations */
+            position: relative; /* Needed for absolute positioning of background animation */
+            z-index: 1; /* Ensure body content is above background */
+        }
+
+        /* Professional Background Animation */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Enhanced gradient with more color stops and subtle vibrant hints */
+            background: linear-gradient(
+                160deg, /* Changed angle for a different, more sweeping movement */
+                rgba(29, 43, 69, 0.85) 0%, /* Darker base */
+                rgba(13, 18, 28, 0.75) 15%,
+                rgba(102, 126, 234, 0.15) 30%, /* More vibrant blue hint */
+                rgba(13, 18, 28, 0.75) 50%,
+                rgba(69, 210, 196, 0.15) 70%,  /* More vibrant teal hint */
+                rgba(13, 18, 28, 0.75) 85%,
+                rgba(29, 43, 69, 0.85) 100%
+            );
+            background-size: 400% 400%; /* Even larger for super smooth pan and more color transitions */
+            animation: backgroundPan 50s linear infinite alternate; /* Slower, super smooth continuous movement */
+            opacity: 0.35; /* More noticeable */
+            z-index: -1; /* Place behind content */
+        }
+
+        @keyframes backgroundPan {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        /* New dynamic element for background overlay */
+        .animated-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Allows clicks to pass through */
+            z-index: -0.5; /* Between content and main background */
+            overflow: hidden;
+        }
+
+        .animated-blob {
+            position: absolute;
+            background: radial-gradient(circle at center, rgba(102, 126, 234, 0.25) 0%, rgba(69, 210, 196, 0.2) 50%, transparent 100%); /* Slightly stronger colors */
+            border-radius: 50%;
+            opacity: 0;
+            animation: blobMove 40s infinite ease-in-out; /* Adjusted duration */
+        }
+
+        /* More blobs with varied sizes and positions */
+        .animated-blob:nth-child(1) {
+            width: 500px; height: 500px;
+            top: 5%; left: 10%;
+            animation-delay: 0s;
+            transform: scale(0.9);
+            animation-duration: 35s; /* Individual duration */
+        }
+        .animated-blob:nth-child(2) {
+            width: 350px; height: 350px;
+            top: 50%; left: 75%;
+            animation-delay: 7s;
+            transform: scale(1.1);
+            animation-duration: 40s;
+        }
+        .animated-blob:nth-child(3) {
+            width: 250px; height: 250px;
+            top: 20%; left: 45%;
+            animation-delay: 14s;
+            transform: scale(0.7);
+            animation-duration: 30s;
+        }
+        .animated-blob:nth-child(4) {
+            width: 450px; height: 450px;
+            top: 70%; left: 20%;
+            animation-delay: 21s;
+            transform: scale(1.0);
+            animation-duration: 45s;
+        }
+        .animated-blob:nth-child(5) {
+            width: 200px; height: 200px;
+            top: 15%; right: 5%;
+            animation-delay: 28s;
+            transform: scale(0.6);
+            animation-duration: 25s;
+        }
+
+        @keyframes blobMove {
+            0% {
+                transform: translate(0, 0) scale(var(--scale, 1));
+                opacity: 0.15; /* Slightly higher base opacity */
+            }
+            25% {
+                transform: translate(50px, -70px) scale(var(--scale, 1.2)); /* Larger movement */
+                opacity: 0.3;
+            }
+            50% {
+                transform: translate(-90px, 100px) scale(var(--scale, 0.8));
+                opacity: 0.2;
+            }
+            75% {
+                transform: translate(70px, 40px) scale(var(--scale, 1.1));
+                opacity: 0.35;
+            }
+            100% {
+                transform: translate(0, 0) scale(var(--scale, 1));
+                opacity: 0.15;
+            }
+        }
+
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            flex-grow: 1;
+        }
+        header {
+            background: linear-gradient(to right, #1d2b45, #2f3e5b); /* Subtle gradient for header */
+            padding: 1.5rem 0;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+            border-radius: 0 0 20px 20px; /* More rounded corners */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: 3.5rem; /* Larger font size for prominence */
+            font-weight: 800; /* Extra bold */
+            color: #ffffff; /* Pure white for name */
+            text-shadow: 2px 2px 8px rgba(102, 126, 234, 0.7); /* Subtle glow for name */
+            animation: h1Pulse 3s infinite alternate, bounceIn 1s ease-out forwards; /* Added bounceIn */
+            margin-bottom: 0.5rem;
+        }
+
+        @keyframes h1Pulse {
+            0% { text-shadow: 2px 2px 8px rgba(102, 126, 234, 0.7); }
+            50% { text-shadow: 2px 2px 15px rgba(102, 126, 234, 1); } /* Brighter glow */
+            100% { text-shadow: 2px 2px 8px rgba(102, 126, 234, 0.7); }
+        }
+
+        /* New bounceIn animation for h1 */
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            60% {
+                opacity: 1;
+                transform: translateY(10px);
+            }
+            80% {
+                transform: translateY(-5px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .header-text p {
+            font-size: 1.5rem; /* Larger subtitle */
+            color: #b0b9c7; /* Adjusted grey */
+        }
+
+        /* New Hero Section Styling */
+        .hero-section {
+            background: linear-gradient(to right, #2a3b5c, #3d5a80); /* New gradient for hero */
+            padding: 3rem 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Deeper shadow */
+            margin-bottom: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border: 1px solid #4f6a91; /* Subtle border */
+            overflow: hidden; /* Important for dynamic text animation */
+            opacity: 0; /* Hidden by default for initial animation */
+            transform: translateY(20px); /* Slightly below for slide-in */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Animation */
+        }
+        /* Class applied by JS for initial visibility */
+        .hero-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-section h2 {
+            font-size: 2.5rem; /* Larger and more impactful */
+            color: #a3bffa; /* Light blue accent */
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+            animation: h2Shine 5s infinite alternate; /* New h2 shine effect */
+        }
+
+        @keyframes h2Shine {
+            0% { text-shadow: 1px 1px 5px rgba(0,0,0,0.5); }
+            50% { text-shadow: 0 0 10px rgba(163, 191, 250, 0.8); } /* Brighter, wider glow */
+            100% { text-shadow: 1px 1px 5px rgba(0,0,0,0.5); }
+        }
+
+        .hero-text-container {
+            min-height: 50px; /* Ensure height for animation */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            color: #e0e6ee;
+            font-weight: 600;
+            overflow: hidden;
+            width: 100%;
+        }
+        .hero-text {
+            display: inline-block;
+            white-space: nowrap;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Smooth JS-driven changes */
+        }
+
+
+        .nav-button {
+            display: block;
+            width: 100%;
+            padding: 1.3rem; /* More padding */
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #3f51b5, #673ab7); /* Gradient button background */
+            color: #ffffff; /* White text */
+            font-weight: bold;
+            border-radius: 12px; /* More rounded */
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease; /* Transition for all properties */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            border: none; /* No default border */
+            font-size: 1.2rem; /* Larger font */
+            letter-spacing: 0.05em; /* Spacing for readability */
+        }
+        .nav-button:hover {
+            background: linear-gradient(to right, #4c63d6, #7a4edc); /* Lighter gradient on hover */
+            transform: translateY(-5px) scale(1.02); /* Lift and slightly enlarge */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Deeper shadow on hover */
+            border: 2px solid #a3bffa; /* Blue border on hover */
+        }
+        .nav-button.active {
+            background: linear-gradient(to right, #667eea, #a3bffa); /* Even more vibrant active gradient */
+            color: #1a202c; /* Dark text for active button */
+            border: 2px solid #d1e2ff; /* Bright border for active */
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.8); /* Stronger glow for active */
+            transform: scale(1.05); /* Slightly larger when active */
+        }
+        .content-section {
+            background-color: #1e293b;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            min-height: 400px;
+            opacity: 0; /* Hidden by default for animation */
+            transform: translateY(20px); /* Slightly below for slide-in */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Animation */
+        }
+        /* Class applied by JS for initial visibility */
+        .content-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        h2 {
+            color: #81e6d9; /* Teal for headings (new vibrant color) */
+            font-size: 2.2rem; /* Larger h2 */
+            font-weight: 700;
+            margin-bottom: 1.8rem;
+            text-align: center;
+            border-bottom: 3px solid #4a5568; /* Thicker border */
+            padding-bottom: 0.8rem;
+            text-transform: uppercase; /* Uppercase for impact */
+            letter-spacing: 0.08em;
+        }
+        h3 {
+            color: #90cdf4; /* Lighter blue for subheadings */
+            font-size: 1.5rem; /* Larger h3 */
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        ul li {
+            margin-bottom: 0.2rem; /* Decreased spacing further */
+            position: relative;
+            padding-left: 1rem; /* Decreased padding for bullet */
+            font-size: 1.05rem;
+            color: #c9d6e4;
+            opacity: 0; /* Hidden for staggered animation */
+            transform: translateY(10px); /* Small offset for slide up */
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+        }
+        ul li.fade-in-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        ul li::before {
+            content: '\2022'; /* Unicode bullet for clearer appearance */
+            color: #81e6d9; /* Teal bullet */
+            font-weight: bolder; /* Bolder bullet */
+            display: inline-block;
+            width: 0.7em; /* Adjusted width for bullet positioning */
+            margin-left: -1em; /* Adjusted margin to bring text closer */
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+        .contact-info a {
+            color: #81e6d9; /* Teal for contact links */
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.2s ease;
+            font-weight: 600;
+        }
+        .contact-info a:hover {
+            color: #4fd1c5; /* Lighter teal on hover */
+            text-decoration: underline;
+            transform: scale(1.05); /* Slight scale on hover */
+        }
+        footer {
+            background-color: #1d2b45; /* Darker footer background */
+            padding: 1.5rem 0;
+            text-align: center;
+            margin-top: 3rem; /* More margin */
+            border-radius: 20px 20px 0 0; /* More rounded corners */
+            box-shadow: 0 -6px 12px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+            color: #b0b9c7; /* Adjusted grey */
+        }
+
+        /* Scroll to Top Button */
+        #scrollTopBtn {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed position */
+            bottom: 30px; /* 30px from the bottom */
+            right: 30px; /* 30px from the right */
+            z-index: 99; /* High z-index to be on top */
+            border: none; /* Remove borders */
+            outline: none; /* Remove outline */
+            background-color: #667eea; /* Blue background */
+            color: white; /* White text */
+            cursor: pointer; /* Add a mouse pointer on hover */
+            padding: 15px; /* Some padding */
+            border-radius: 50%; /* Rounded corners */
+            font-size: 18px; /* Increase font size */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        #scrollTopBtn:hover {
+            background-color: #4c5bb5; /* Darker on hover */
+            transform: scale(1.1);
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 768px) {
+            .grid-cols-1-2 {
+                grid-template-columns: 1fr 2fr;
+            }
+            .nav-button {
+                padding: 1.5rem;
+            }
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+            .header-text {
+                text-align: center;
+                margin-right: 0;
+            }
+            .contact-info {
+                width: 100%;
+                justify-content: center;
+                margin-top: 1.5rem; /* More space for contact info */
+            }
+        }
+        @media (max-width: 767px) {
+            .grid-cols-1-2 {
+                grid-template-columns: 1fr;
+            }
+            .header-content {
+                flex-direction: column;
+                margin-bottom: 1rem;
+            }
+            .header-text {
+                text-align: center;
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+            .contact-info {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: center;
+            }
+            .contact-info a {
+                margin: 0.25rem 0;
+            }
+            h1 {
+                font-size: 2.5rem; /* Smaller on mobile */
+            }
+            .header-text p {
+                font-size: 1.2rem; /* Smaller subtitle on mobile */
+            }
+            h2 {
+                font-size: 1.8rem; /* Smaller h2 on mobile */
+            }
+            h3 {
+                font-size: 1.3rem; /* Smaller h3 on mobile */
+            }
+            .profile-section, .content-section {
+                padding: 1.5rem;
+            }
+            #scrollTopBtn {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="animated-overlay">
+        <div class="animated-blob" style="--scale: 0.9;"></div>
+        <div class="animated-blob" style="--scale: 1.1;"></div>
+        <div class="animated-blob" style="--scale: 0.7;"></div>
+        <div class="animated-blob" style="--scale: 1.0;"></div>
+        <div class="animated-blob" style="--scale: 0.6;"></div>
+    </div>
+
+    <header>
+        <div class="header-content">
+            <div class="header-text">
+                <h1 class="mb-2">SAIM RIZWAN</h1>
+                <p>Aspiring Chartered Accountant</p>
+            </div>
+        </div>
+        <div class="contact-info mt-4 flex justify-center items-center space-x-6 text-lg">
+            <a href="tel:+923317397539" class="hover:text-blue-300 transition duration-300 ease-in-out">
+                <i class="fas fa-phone-alt mr-2"></i>+92 331 7397539
+            </a>
+            <a href="mailto:saim.rizwan.ca@gmail.com" class="hover:text-blue-300 transition duration-300 ease-in-out">
+                <i class="fas fa-envelope mr-2"></i>saim.rizwan.ca@gmail.com
+            </a>
+            <a href="https://www.linkedin.com/in/saim-rizwan-3a3340358" target="_blank" class="hover:text-blue-300 transition duration-300 ease-in-out">
+                <i class="fab fa-linkedin mr-2"></i>LinkedIn
+            </a>
+        </div>
+    </header>
+
+    <main class="container py-8">
+        <!-- New Dynamic Hero Section -->
+        <div class="hero-section">
+            <h2 class="dynamic-h2">Passion for Numbers, Drive for Impact.</h2>
+            <div class="hero-text-container">
+                <span class="hero-text" id="dynamic-tagline">Financial Acumen | Problem Solver | Future CA Leader</span>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 items-start">
+            <!-- Left Column for Navigation -->
+            <div class="col-span-1 space-y-4">
+                <a href="#education" class="nav-button" data-section="education">EDUCATION</a>
+                <a href="#project-experience" class="nav-button" data-section="project-experience">PROJECT EXPERIENCE</a>
+                <a href="#skills-expertise" class="nav-button" data-section="skills-expertise">SKILLS & EXPERTISE</a>
+                <a href="#achievements-honors" class="nav-button" data-section="achievements-honors">ACHIEVEMENTS & HONORS</a>
+                <a href="#hobbies-interests" class="nav-button" data-section="hobbies-interests">HOBBIES & INTERESTS</a>
+                <a href="#references" class="nav-button" data-section="references">REFERENCES</a>
+            </div>
+
+            <!-- Right Column for Content (initially hidden) -->
+            <div class="col-span-2 content-section" id="content-display">
+                <p class="text-gray-400 text-center text-lg mt-10">Select a section from the left to view details.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scroll to Top Button -->
+    <button onclick="scrollToTop()" id="scrollTopBtn" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <footer>
+        <div class="container text-gray-400">
+            <p>&copy; 2024 Saim Rizwan. All rights reserved.</p>
+            <p>References are available upon request.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Data for each section
+        const sectionsData = {
+            'education': `
+                <h2>EDUCATION</h2>
+                <h3>The Institute of Chartered Accountants of Pakistan | Present</h3>
+                <ul>
+                    <li>Certificate in Accounting and Finance (CAF) (No crash attempt)</li>
+                    <li>Pre-Requisite Competencies (Qualified)</li>
+                </ul>
+                <h3>KIPS College Faisalabad | 2019-2021</h3>
+                <ul>
+                    <li>Higher Secondary School Certification (Pre-Medical): 97.72% (1075/1100)</li>
+                </ul>
+                <h3>Divisional Public School & College Faisalabad | 2017-2019</h3>
+                <ul>
+                    <li>Secondary School Certification: 87.45% (962/1100)</li> <!-- Corrected marks -->
+                    <li>Awarded Academic Excellence Shield for exceptional academic performance.</li>
+                </ul>
+            `,
+            'project-experience': `
+                <h2>PROJECT EXPERIENCE / APPLIED SKILLS</h2>
+                <h3>Financial Tool Development & Presentation: Tax Calculator</h3>
+                <ul>
+                    <li>Designed and developed a comprehensive tax calculator using MS Excel to simplify complex tax computations for academic purposes, demonstrating practical application of taxation principles.</li>
+                    <li>Applied in-depth taxation principles and financial reporting knowledge to ensure accuracy, regulatory compliance, and robust functionality within the Excel model.</li>
+                    <li>Created compelling and visually engaging PowerPoint presentations to clearly explain the calculator's methodology, features, and insights to a non-technical audience.</li>
+                    <li>Successfully presented the project to a class of students, effectively communicating complex financial concepts and engaging with questions to foster understanding.</li>
+                    <li>Demonstrated proficiency in financial forecasting and problem-solving by anticipating user needs and designing an intuitive, error-reducing tool.</li>
+                </ul>
+            `,
+            'skills-expertise': `
+                <h2>SKILLS & EXPERTISE</h2>
+                <h3>Technical Skills:</h3>
+                <ul>
+                    <li>MS Office Suite (Excel, Word, PowerPoint)</li>
+                    <li>Financial Reporting</li>
+                    <li>Taxation Principles</li>
+                    <li>Audit Procedures</li>
+                    <li>Cash Flow Analysis</li>
+                </ul>
+                <h3>Soft Skills:</h3>
+                <ul>
+                    <li><strong>Strong Communication & Public Speaking:</strong> Developed through participation in speech competitions and successful class presentations of complex financial projects.</li>
+                    <li><strong>Analytical Thinking & Problem-Solving:</strong> Proficient in financial forecasting, risk assessment, and compliance evaluation; demonstrated through the design and execution of the tax calculator project.</li>
+                    <li><strong>Leadership & Team Collaboration:</strong> Demonstrated as Class Representative; showcased through involvement in tablos, cultural events, and collaborative academic projects.</li>
+                    <li><strong>Attention to Detail:</strong> Crucial for financial analysis and regulatory compliance, cultivated through rigorous academic pursuits and precise project work.</li>
+                    <li><strong>Creativity:</strong> Showcased through involvement in cultural events and an innovative approach to problem-solving in project design.</li>
+                </ul>
+                <h3>Courses and Certifications:</h3>
+                <ul>
+                    <li>Presentation & Personal Effectiveness</li>
+                    <li>Hp Life Cash Flow Management</li>
+                    <li>AI for Beginners</li>
+                    <li>Resume Writing & Job Interviewing</li>
+                    <li>MS Office Certification</li>
+                    <li>Science & Business Idea Exhibition 2023</li>
+                </ul>
+            `,
+            'achievements-honors': `
+                <h2>ACHIEVEMENTS & HONORS</h2>
+                <ul>
+                    <li>Graduated from S-T-E-M Summer Camp (2016)</li>
+                    <li>Hifz-e-Quran Certified</li>
+                    <li>Awarded A-Excellence by STARS Academy</li>
+                    <li>Merit Recognition - Divisional Public School</li>
+                </ul>
+            `,
+            'hobbies-interests': `
+                <h2>HOBBIES & INTERESTS</h2>
+                <ul>
+                    <li>Chess</li>
+                    <li>Puzzle Solving</li>
+                    <li>Exploring & Developing IT Skills (Continuous Learning & Digital Proficiency)</li>
+                </ul>
+            `,
+            'references': `
+                <h2>REFERENCES</h2>
+                <p class="text-gray-300">References are available upon request to maintain their privacy in this public portfolio.</p>
+            `
+        };
+
+        const navButtons = document.querySelectorAll('.nav-button');
+        const contentDisplay = document.getElementById('content-display');
+        const heroSection = document.querySelector('.hero-section');
+        const contentSection = document.querySelector('.content-section');
+        const dynamicTagline = document.getElementById('dynamic-tagline');
+
+        // Array of taglines for the hero section
+        const taglines = [
+            "Financial Acumen | Problem Solver | Future CA Leader",
+            "Analytical Thinking | Strategic Vision | Audit Enthusiast",
+            "Taxation Principles | Financial Analysis | Driven Professional"
+        ];
+        let currentTaglineIndex = 0;
+
+        function animateTagline() {
+            // Start fade out and slide up (off-screen)
+            dynamicTagline.style.opacity = 0;
+            dynamicTagline.style.transform = 'translateY(-20px)';
+
+            // After a short delay (for the fade out to complete), change text and position for next fade in
+            setTimeout(() => {
+                currentTaglineIndex = (currentTaglineIndex + 1) % taglines.length;
+                dynamicTagline.textContent = taglines[currentTaglineIndex];
+                dynamicTagline.style.transform = 'translateY(20px)'; // Position below to slide up
+            }, 700); // Shorter delay (matching transition time)
+
+            // After text change and positioning, start fade in and slide up (into view)
+            setTimeout(() => {
+                dynamicTagline.style.opacity = 1;
+                dynamicTagline.style.transform = 'translateY(0)';
+            }, 1200); // Delay before new text starts fading in (longer than previous to ensure text change is not seen)
+
+            // Schedule the next full cycle
+            setTimeout(animateTagline, 8000); // Total cycle time (hold duration + animation duration)
+        }
+
+        // Function to apply staggered fade-in to list items
+        function animateListItems(containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            const listItems = container.querySelectorAll('ul li');
+            listItems.forEach((item, index) => {
+                item.classList.remove('fade-in-item'); // Ensure it's reset
+                setTimeout(() => {
+                    item.classList.add('fade-in-item');
+                }, index * 100); // Stagger by 100ms per item
+            });
+        }
+
+
+        navButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+
+                navButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+
+                const sectionKey = this.dataset.section;
+
+                // Ensure content sections always fade in/out regardless of scroll
+                contentDisplay.style.opacity = 0;
+                contentDisplay.style.transform = 'translateY(20px)';
+
+                setTimeout(() => {
+                    if (sectionsData[sectionKey]) {
+                        contentDisplay.innerHTML = sectionsData[sectionKey];
+                        // After content is set, animate its list items
+                        // We need a specific ID for the content display area where list items are
+                        // Since 'content-display' contains the new content, we can target children within it.
+                        animateListItems('content-display');
+                    } else {
+                        contentDisplay.innerHTML = '<p class="text-gray-400 text-center text-lg mt-10">Content not found for this section.</p>';
+                    }
+                    contentDisplay.style.opacity = 1;
+                    contentDisplay.style.transform = 'translateY(0)';
+                }, 300);
+            });
+        });
+
+        // Apply initial animations for main content sections
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initial animation for the first tagline
+            dynamicTagline.style.opacity = 1;
+            dynamicTagline.style.transform = 'translateY(0)';
+            
+            // Start the cycling animation after an initial display time for the first tagline
+            setTimeout(animateTagline, 4000); // Show first tagline for 4 seconds before cycling
+
+            const defaultButton = document.querySelector('.nav-button[data-section="education"]');
+            if (defaultButton) {
+                defaultButton.click(); // This will trigger the content load and list item animation
+            }
+
+            // --- Scroll-triggered visibility for hero and content sections ---
+            const observerOptions = {
+                root: null, // viewport as the root
+                rootMargin: '0px',
+                threshold: 0.1 // 10% of element visible to trigger
+            };
+
+            const sectionsToAnimateOnScroll = [heroSection, contentSection];
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Unobserve after animation
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+            sectionsToAnimateOnScroll.forEach(section => {
+                observer.observe(section);
+            });
+            // --- End Scroll-triggered visibility ---
+            
+            // Scroll to Top button logic
+            const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+            window.onscroll = function() {scrollFunction()};
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    scrollTopBtn.style.display = "block";
+                } else {
+                    scrollTopBtn.style.display = "none";
+                }
+            }
+
+            window.scrollToTop = function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        });
+
+    </script>
+</body>
+</html>
